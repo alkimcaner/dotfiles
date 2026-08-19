@@ -161,14 +161,9 @@ hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("zeditor"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal .. " btop"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
-
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -177,6 +172,12 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
+
+-- Move focus with mainMod + arrow keys
+hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
 -- Move windows with mainMod + SHIFT + arrow keys
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
@@ -191,9 +192,6 @@ hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
--- Fullscreen
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 
 -- Toggle an external monitor
 local function toggle_monitor(output)
@@ -270,11 +268,6 @@ hl.window_rule({
     size  = { 1080, 920 },
 })
 
--- hl.window_rule({
---     match     = { class = "cs2" },
---     immediate = true,
--- })
-
 hl.layer_rule({
     name = "noctalia",
     match = {
@@ -305,13 +298,3 @@ require("hyprland-gui")
 hl.on("hyprland.start", function()
     hl.exec_cmd("noctalia")
 end)
-
--- hl.config({
---     plugin = {
---         csgo_vulkan_fix = {
---             fix_mouse = true,
---         },
---     },
--- })
-
--- hl.plugin.csgo_vulkan_fix.vkfix_app({ app = "cs2", w = 1920, h = 1080 })
