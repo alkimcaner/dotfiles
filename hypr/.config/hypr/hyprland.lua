@@ -41,9 +41,13 @@ hl.env("EDITOR", "zeditor --wait")
 ----------------------
 
 hl.config({
+    animations = {
+        enabled = false
+    },
+
     general = {
-        gaps_in          = 5,
-        gaps_out         = 10,
+        gaps_in          = 4,
+        gaps_out         = 8,
         border_size      = 1,
         resize_on_border = true,
         allow_tearing    = false,
@@ -51,14 +55,14 @@ hl.config({
     },
 
     decoration = {
-        rounding         = 10,
-        rounding_power   = 4,
+        rounding         = 0,
+        rounding_power   = 2,
 
         active_opacity   = 1.0,
         inactive_opacity = 1.0,
 
         blur             = {
-            enabled  = true,
+            enabled  = false,
             size     = 10,
             passes   = 2,
         },
