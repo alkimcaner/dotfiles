@@ -41,30 +41,37 @@ hl.env("EDITOR", "zeditor --wait")
 ----------------------
 
 hl.config({
-    animations = {
-        enabled = false
+    input = {
+        kb_layout      = "tr",
+        sensitivity    = 0,
+        follow_mouse   = 1,
+        force_no_accel = true,
     },
 
     general = {
         gaps_in          = 4,
         gaps_out         = 8,
-        border_size      = 1,
+        border_size      = 2,
+        col              = {
+            active_border = "rgba(100, 100, 100, 0.5)",
+            inactive_border = "rgba(0, 0, 0, 0)",
+        },
         resize_on_border = true,
         allow_tearing    = false,
         layout           = "dwindle",
     },
 
     decoration = {
-        rounding         = 0,
-        rounding_power   = 2,
+        rounding         = 12,
+        rounding_power   = 4,
 
         active_opacity   = 1.0,
         inactive_opacity = 1.0,
 
         blur             = {
-            enabled  = false,
-            size     = 10,
-            passes   = 2,
+            enabled  = true,
+            size     = 20,
+            passes   = 3,
         },
     },
 
@@ -106,19 +113,6 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almo
 hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
-
---------------
----- INPUT ----
---------------
-
-hl.config({
-    input = {
-        kb_layout      = "tr",
-        sensitivity    = 0,
-        follow_mouse   = 1,
-        force_no_accel = true,
-    },
-})
 
 -------------------
 ---- KEYBINDINGS ----
@@ -230,13 +224,6 @@ hl.layer_rule({
 for i = 1, 5 do
     hl.workspace_rule({ workspace = i, monitor = "DP-1", persistent = true })
 end
-
------------------------
----- THEME & START ----
------------------------
-
-require("noctalia").apply_theme()
-require("hyprland-gui")
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("noctalia")
