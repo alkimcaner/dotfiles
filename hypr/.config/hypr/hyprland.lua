@@ -69,15 +69,16 @@ hl.config({
         inactive_opacity = 1.0,
 
         blur             = {
-            enabled  = true,
-            size     = 20,
-            passes   = 3,
+            enabled = true,
+            size    = 20,
+            passes  = 3,
         },
     },
 
     misc = {
-        force_default_wallpaper = -1,
-        disable_hyprland_logo   = true,
+        force_default_wallpaper  = -1,
+        disable_hyprland_logo    = true,
+        disable_splash_rendering = true,
     },
 
     dwindle = {
