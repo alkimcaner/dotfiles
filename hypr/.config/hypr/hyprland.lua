@@ -126,6 +126,7 @@ hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("zeditor"))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd(terminal .. " opencode"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal .. " btop"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + H", hl.dsp.exec_cmd(terminal .. " herdr"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
