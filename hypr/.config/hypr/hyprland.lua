@@ -84,7 +84,49 @@ hl.config({
     dwindle = {
         preserve_split = true,
     },
+
+    plugin = {
+        hyprbars = {
+            enabled            = true,
+            bar_height         = 28,
+            bar_color          = "rgba(0, 0, 0, 0.5)",
+            bar_blur           = false,
+            bar_title_enabled  = true,
+            bar_text_size      = 12,
+            bar_text_font      = "Ubuntu",
+            bar_text_align     = "center",
+            bar_buttons_alignment = "right",
+            bar_padding        = 7,
+            bar_button_padding = 5,
+            bar_part_of_window = true,
+            bar_precedence_over_border = true,
+            on_double_click    = "hyprctl dispatch 'hl.dsp.window.fullscreen({ mode = \"maximized\", action = \"toggle\" })'",
+        },
+    },
 })
+
+-- hyprbars buttons must be added after the plugin loads,
+-- so register them on every config reload (hyprpm loads plugins async).
+hl.on("config.reloaded", function()
+    if hl.plugin and hl.plugin.hyprbars then
+        hl.plugin.hyprbars.add_button({
+            bg_color = "rgb(ff4040)",
+            fg_color = "rgb(ffffff)",
+            size = 12,
+            icon = "",
+            action = "hyprctl dispatch 'hl.dsp.window.close()'",
+        })
+
+        hl.plugin.hyprbars.add_button({
+            bg_color = "rgb(eeee11)",
+            fg_color = "rgb(000000)",
+            size = 12,
+            icon = "",
+            action = "hyprctl dispatch 'hl.dsp.window.fullscreen({ mode = \"maximized\", action = \"toggle\" })'",
+        })
+    end
+end)
+
 
 -------------------
 ---- ANIMATIONS ----
