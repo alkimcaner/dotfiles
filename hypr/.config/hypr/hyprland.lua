@@ -80,7 +80,7 @@ hl.config({
             render_power   = 3,
             scale          = 1.0,
             sharp          = false,
-            color          = "rgba(0, 0, 0, 0.3)",
+            color          = "rgba(0, 0, 0, 0.7)",
             color_inactive = "rgba(0, 0, 0, 0.1)",
             offset         = { 0, 0 },
         },
